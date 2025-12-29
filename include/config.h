@@ -16,12 +16,12 @@ static const IPAddress DNS2      (8,8,4,4);
 static const uint16_t WORDS_IN          = 20;
 static const uint16_t WORDS_OUT         = 20;
 static const uint16_t HREG_READ_START   = 0;    // offset 0-based  (≃ 40001)
-static const uint16_t HREG_WRITE_START  = 100;  // offset 0-based  (≃ 40101)
+static const uint16_t HREG_WRITE_START  = 50;  // offset 0-based  (≃ 40101)
 
 // ------------------- Timing ----------------------------------
-static const uint32_t TCP_CYCLE_MS   = 250;   // polling round-robin
-static const uint32_t RTU_CYCLE_MS   = 250;
-static const uint32_t LOGIC_MS       = 200;
+static const uint32_t TCP_CYCLE_MS   = 201;   // polling round-robin
+static const uint32_t RTU_CYCLE_MS   = 251;
+static const uint32_t LOGIC_MS       = 1000;
 static const uint32_t MB_TIMEOUT_MS  = 600;
 
 // ------------------- Modbus TCP (3 slave) --------------------
@@ -32,9 +32,9 @@ struct TcpCfg {
   uint8_t   unitId;
 };
 static const TcpCfg TCP_CFG[NUM_TCP] = {
-  { IPAddress(192,168,1,80), 5022, 1 },
-  { IPAddress(192,168,1,81), 5022, 1 },
-  { IPAddress(192,168,1,82), 5022, 1 }
+  { IPAddress(192,168,1,95), 5022, 1 },
+  { IPAddress(192,168,1,95), 5022, 2 },
+  { IPAddress(192,168,1,95), 5022, 3 }
 };
 
 // ------------------- Modbus RTU (3 slave) --------------------
@@ -46,5 +46,5 @@ static const RtuCfg RTU_CFG[NUM_RTU] = { {1}, {2}, {3} };
 
 static const uint32_t RTU_BAUD   = 19200;
 static const int PIN_RE_DE       = 33;  // HIGH=TX (DE/RE)
-static const int PIN_UART_RX     = 16;  // UART2 RX
+static const int PIN_UART_RX     = 5;  // UART2 RX
 static const int PIN_UART_TX     = 17;  // UART2 TX;
